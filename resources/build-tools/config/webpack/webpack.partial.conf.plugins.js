@@ -70,7 +70,7 @@ module.exports = ({ config, isDevelopment, buildType }) => (webpackConfig) => {
             },
           }
         : {
-            filename: 'index.html',
+            filename: path.resolve(__dirname, '../../../views/initialload.blade.php'),
             template: 'index.html',
             version: '/',
             inject: true,
