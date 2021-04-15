@@ -16,9 +16,9 @@ class CreateTextEventsTable extends Migration
         Schema::create('text_events', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-	        $table->unsignedBigInteger('user_id');
+	        $table->unsignedBigInteger('session_id');
 	        $table->unsignedBigInteger('resource_id');
-	        $table->foreign('user_id')->references('id')->on('users');
+	        $table->foreign('session_id')->references('id')->on('sessions');
 	        $table->foreign('resource_id')->references('id')->on('resources');
 	        $table->integer('page_visit');
         });
