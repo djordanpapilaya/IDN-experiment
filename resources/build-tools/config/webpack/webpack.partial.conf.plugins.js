@@ -50,6 +50,10 @@ module.exports = ({ config, isDevelopment, buildType }) => (webpackConfig) => {
           from: 'public-files/web.config',
           to: '',
         },
+        {
+          from: 'public-files/uva-white.png',
+          to: '',
+        },
       ],
     }),
     new webpack.DefinePlugin({
