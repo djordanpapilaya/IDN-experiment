@@ -31,18 +31,20 @@
                 <!-- Name -->
                 <div class="flex">
                     <div class="w-1/2 pr-10">
-                        <x-label for="firstName" :value="__('First Name')"/>
+                        <x-input type="hidden" :value="$usertoken" name="user_token" id="user_token" />
 
-                        <x-input id="firstName" class="block mt-1 w-full" type="text" name="firstName"
-                                 :value="old('firstName')" required
+                        <x-label for="first_name" :value="__('First Name')"/>
+
+                        <x-input id="first_name" class="block mt-1 w-full" type="text" name="first_name"
+                                 :value="$firstName" required
                                  autofocus/>
                     </div>
 
                     <div class="w-1/2 pl-10">
-                        <x-label for="lastName" :value="__('Last Name')"/>
+                        <x-label for="first_name" :value="__('Last Name')"/>
 
-                        <x-input id="lastName" class="block mt-1 w-full" type="text" name="lastName"
-                                 :value="old('lastName')" required
+                        <x-input id="last_name" class="block mt-1 w-full" type="text" name="last_name"
+                                 :value="$lastName" required
                                  autofocus/>
                     </div>
                 </div>
