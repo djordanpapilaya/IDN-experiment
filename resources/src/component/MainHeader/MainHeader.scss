@@ -1,0 +1,24 @@
+/* stylelint-disable-next-line block-no-empty */
+.main-header {
+  background: $colorWhite;
+  width: 100vw;
+  padding: 2.5rem 0;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .logo {
+    height: 5.5rem;
+    margin-right: 3.5rem;
+  }
+}

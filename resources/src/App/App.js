@@ -3,6 +3,7 @@ import { mapMutations, mapState } from 'vuex';
 import { FlowManager, AbstractRegistrableComponent } from 'vue-transition-component';
 import { SET_DEVICE_STATE } from '../store/module/app/app';
 import { RouteNames } from '../router/routes';
+import MainHeader from '../component/MainHeader';
 
 // @vue/component
 export default {
@@ -11,6 +12,9 @@ export default {
     ...mapState({
       deviceState: (state) => state.app.deviceState,
     }),
+  },
+  components: {
+    MainHeader,
   },
   created() {
     this.$deviceStateTracker.addEventListener(
