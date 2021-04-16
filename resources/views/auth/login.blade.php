@@ -73,10 +73,10 @@
                         {{ __('Sign in') }}
                     </x-button>
 
-                    <a class="font-bold text-sm text-gray-900 w-full text-center" href="{{ route('register') }}">
-                        {{ __('completed survey 1 and not an account yet?') }} <span
-                                class="text-blue-700">Sign up here</span>
-                    </a>
+{{--                    <a class="font-bold text-sm text-gray-900 w-full text-center" href="{{ route('register') }}">--}}
+{{--                        {{ __('completed survey 1 and not an account yet?') }} <span--}}
+{{--                                class="text-blue-700">Sign up here</span>--}}
+{{--                    </a>--}}
                 </div>
             </form>
         </div>
