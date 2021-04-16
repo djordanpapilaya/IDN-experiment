@@ -1,11 +1,30 @@
 // Fonts
+$fontPrimary: 'GoogleSansRegular', Arial, sans-serif;
+$fontSecondary: 'GoogleSansBold', Arial, sans-serif;
 
 // Z Index
 $zLayout: default;
 
 // Sizes
+$gridSize: 4rem;
+
+$smallSpacing: $gridSize * 2; // 8rem
+$mediumSpacing: $gridSize * 5; // 20rem
+$largeSpacing: $gridSize * 10; // 40rem
+
+$wrapperWidth: $gridSize * 48; // 192rem;
+
+$gutterWidth: 5rem;
+$mobileGutterWidth: 4.5rem;
 
 // Colors
+$colorWhite: #fff;
+$colorBlack: #212324;
+$colorPrimary: #F3F4F6;
+$colorSecondary: #304BB1;
+$colorTertiary: #A17C37;
+//$colorQuaternary: #A17C37;
+
 
 // $mediaQueries
 @import '../../../data/mediaQueries.json';

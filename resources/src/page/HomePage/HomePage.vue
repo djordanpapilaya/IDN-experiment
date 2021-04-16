@@ -1,8 +1,8 @@
-<style src="./HomePage.scss" module lang="scss"></style>
-<script src="./HomePage.js"></script>
+<style src="./Homepage.scss" module lang="scss"></style>
+<script src="./Homepage.js"></script>
 
 <template>
-  <div :class="[$style.homePage]">
-    <h2>HomePage</h2>
+  <div :class="[$style.homepage]">
+    <h2>Homepage</h2>
   </div>
 </template>

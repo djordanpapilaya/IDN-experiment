@@ -1,6 +1,37 @@
 html {
   font-size: 10px;
   box-sizing: border-box;
+  font-family: $fontSecondary;
+  background: $colorPrimary;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -ms-font-feature-settings: 'kern' 1;
+  -o-font-feature-settings: 'kern' 1;
+  -webkit-font-feature-settings: 'kern' 1;
+  font-feature-settings: 'kern' 1;
+  -webkit-font-kerning: normal;
+  font-kerning: normal;
+
+
+  body {
+    pointer-events: all !important;
+  }
+
+  //@include respond-to(X_LARGE) {
+  //  font-size: 8.5px;
+  //}
+  //
+  //@include respond-to(LARGE) {
+  //  font-size: 7px;
+  //}
+  //
+  //@include respond-to(MEDIUM) {
+  //  font-size: 10px;
+  //}
+  //
+  //@include respond-to(SMALL) {
+  //  font-size: 10px;
+  //}
 }
 
 *,

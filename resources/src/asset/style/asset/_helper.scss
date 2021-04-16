@@ -1,0 +1,33 @@
+.abs-center {
+  position: absolute;
+  @include offset(50%, 50%);
+  transform: translate(-50%, -50%);
+}
+
+.abs-fill {
+  position: absolute;
+  @include offset(0, 0);
+  @include size(100%);
+}
+
+.fit-contain {
+  @include offset(0, 0);
+  @include size(100%);
+  object-fit: contain;
+  position: absolute;
+  font-family: 'object-fit: contain;'; /* stylelint-disable-line */
+}
+
+.fit-cover {
+  @include offset(0, 0);
+  @include size(100%);
+  object-fit: cover;
+  position: absolute;
+  font-family: 'object-fit: cover;'; /* stylelint-disable-line */
+}
+
+.bg-cover {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}

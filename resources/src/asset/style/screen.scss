@@ -1,3 +1,12 @@
 @import '~normalize.css';
 
+@import 'type/font';
+@import 'type/heading';
+@import 'type/copy';
+
+@import 'asset/button';
+@import "asset/form";
+@import 'asset/helper';
+@import 'asset/wrapper';
+
 @import 'layout/base';

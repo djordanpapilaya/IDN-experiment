@@ -1,6 +1,8 @@
 import { DeviceStateEvent } from 'seng-device-state-tracker';
 import { mapMutations, mapState } from 'vuex';
+import { FlowManager, AbstractRegistrableComponent } from 'vue-transition-component';
 import { SET_DEVICE_STATE } from '../store/module/app/app';
+import { RouteNames } from '../router/routes';
 
 // @vue/component
 export default {
@@ -23,6 +25,9 @@ export default {
     }),
     handleDeviceStateUpdate(event) {
       this.setDeviceState(event.data.state);
+    },
+    onLeave(element, done) {
+      FlowManager.transitionOut.then(() => FlowManager.done()).then(done);
     },
   },
 };

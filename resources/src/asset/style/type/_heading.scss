@@ -1,0 +1,30 @@
+.heading-01 {
+  font: 3.2rem/4.1rem $fontSecondary;
+}
+
+.heading-02 {
+  font: 2.4rem/3.3rem $fontSecondary;
+}
+
+.heading-03 {
+  font: 1.8rem/2.4rem $fontSecondary;
+}
+
+.heading-04 {
+  font: 1.2rem/1.4rem $fontSecondary;
+}
+
+//
+//@include respond-to(SMALL) {
+//  .heading-01 {
+//    font: 4rem/5.1rem $fontSecondary;
+//  }
+//
+//  .heading-02 {
+//    font: 3.2rem/3rem $fontSecondary;
+//  }
+//
+//  .heading-03 {
+//    font: 1.4rem/1.8rem $fontSecondary;
+//  }
+//}

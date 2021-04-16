@@ -1,0 +1,66 @@
+.wrapper {
+  @include size(100%, auto);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $wrapperWidth;
+  position: relative;
+  height: 100%;
+
+  &.breakout-right {
+    width: calc(100vw - ((100vw - #{$wrapperWidth}) / 2));
+    max-width: 100vw;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  &.breakout-left {
+    width: calc(100vw - ((100vw - #{$wrapperWidth}) / 2));
+    max-width: 100vw;
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .content-wrapper {
+    width: 100%;
+    padding-left: $gridSize * 2;
+    padding-right: $gridSize * 2;
+
+    &.breakout-right {
+      $paddingSpacing: $gutterWidth - ($gridSize * 15) - (-1.2rem); // 1.2rem is magic(scrollbarwidth?)
+      $width: ($wrapperWidth + ($gutterWidth * 2));
+      //width: calc(100vw + #{$paddingSpacing} - calc((100vw - #{$width}) / 2));
+      padding-right: 0;
+      //max-width: 100vw;
+    }
+
+    &.breakout-left {
+      $paddingSpacing: $gutterWidth - ($gridSize * 15) - (-1.2rem); // 1.2rem is magic(scrollbarwidth?)
+      $width: ($wrapperWidth + ($gutterWidth * 2));
+      //width: calc(100vw + #{$paddingSpacing} - calc((100vw - #{$width}) / 2));
+      padding-left: 0;
+      //max-width: 100vw;
+    }
+
+    @include respond-to(X_LARGE) {
+      $paddingSpacing: $gutterWidth - ($gridSize * 15) + (0.5rem);
+
+      //&.breakout-right {
+      //  width: calc(100vw + #{$paddingSpacing});
+      //}
+    }
+
+    @include respond-to(MEDIUM) {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+
+  @include respond-to(SMALL) {
+    padding-left: $mobileGutterWidth;
+    padding-right: $mobileGutterWidth;
+
+    &.hide-on-mobile {
+      padding: 0;
+    }
+  }
+}
