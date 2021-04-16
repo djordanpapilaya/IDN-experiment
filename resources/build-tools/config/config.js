@@ -59,7 +59,7 @@ module.exports = {
   /* non-development builds */
   dist: {
     /* paths */
-    indexHtml: path.resolve(__dirname, '../../views/initialload.blade.php'),
+    indexHtml: path.resolve(__dirname, '../../views/layouts/app.blade.php'),
     versionPath,
     publicPath,
 
