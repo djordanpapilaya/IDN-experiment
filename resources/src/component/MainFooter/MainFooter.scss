@@ -4,15 +4,17 @@
   position: fixed;
   bottom: 0;
   height: 5rem;
+  min-width: 100vw;
 
   .footer {
     display: flex;
-    padding: 1rem 0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     align-items: center;
     justify-content: flex-end;
   }
 
-  .button {
+  .button:first-child  {
     margin-right: 2.5rem;
   }
 }

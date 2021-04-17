@@ -1,7 +1,7 @@
 /* stylelint-disable-next-line block-no-empty */
 .main-header {
   background: $colorWhite;
-  width: 100vw;
+  min-width: 100vw;
   padding: 2.5rem 0;
   border-bottom: $colorTint 1px solid;
 

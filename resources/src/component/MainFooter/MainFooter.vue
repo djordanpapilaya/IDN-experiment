@@ -7,7 +7,7 @@
       <a href="" :class="[$style.button, 'button primary-button']">
         Pause experiment
       </a>
-      <a href="" :class="['button secondary-button']">
+      <a href="" :class="[$style.button, 'button secondary-button']">
         Continue to final survey
       </a>
     </div>
