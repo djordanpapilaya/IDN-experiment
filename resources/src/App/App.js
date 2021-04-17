@@ -4,6 +4,7 @@ import { FlowManager, AbstractRegistrableComponent } from 'vue-transition-compon
 import { SET_DEVICE_STATE } from '../store/module/app/app';
 import { RouteNames } from '../router/routes';
 import MainHeader from '../component/MainHeader';
+import MainFooter from '../component/MainFooter';
 
 // @vue/component
 export default {
@@ -15,6 +16,7 @@ export default {
   },
   components: {
     MainHeader,
+    MainFooter,
   },
   created() {
     this.$deviceStateTracker.addEventListener(

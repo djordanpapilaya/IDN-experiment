@@ -7,5 +7,6 @@
     <transition @leave="onLeave">
       <router-view />
     </transition>
+    <main-footer />
   </div>
 </template>

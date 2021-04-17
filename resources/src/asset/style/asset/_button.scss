@@ -10,13 +10,17 @@
 }
 
 .primary-button {
-  font: 1.6rem/2rem $fontSecondary;
-  padding: 1rem 4.5rem;
-  color: red;
-  background: white;
-  border-radius: 10px;
+  font: 1.4rem/1.4rem $fontPrimary;
+  padding: .6rem 2.5rem;
+  color: $colorWhite;
+  background: $colorSecondary;
+  border-radius: 13.5px;
+}
 
-  &.light {
-    background: white;
-  }
+.secondary-button {
+  font: 1.4rem/1.4rem $fontPrimary;
+  padding: .6rem 2.5rem;
+  color: $colorWhite;
+  background: $colorTertiary;
+  border-radius: 13.5px;
 }
