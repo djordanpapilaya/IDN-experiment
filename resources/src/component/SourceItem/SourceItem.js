@@ -1,4 +1,5 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
+import VueTypes from 'vue-types';
 import { TweenLite, TimelineMax, Power4 } from 'gsap';
 import SourceItemTransitionController from './SourceItemTransitionController';
 
@@ -6,6 +7,10 @@ import SourceItemTransitionController from './SourceItemTransitionController';
 export default {
   name: 'SourceItem',
   extends: AbstractTransitionComponent,
+  props: {
+    visited: VueTypes.bool.def(false).isRequired,
+    type: VueTypes.string.isRequired
+  },
   data() {
     return {
       isInverted: false,

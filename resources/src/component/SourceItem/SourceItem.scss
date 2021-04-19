@@ -6,6 +6,29 @@
   cursor: pointer;
   position: relative;
 
+  &.has-visited {
+    .icon-wrapper {
+      background-color: rgba(93,95,97,.4);
+    }
+
+    .visited {
+      position: absolute;
+      display: block;
+      @include size(2rem);
+      top: -.5rem;
+      right: -.5rem;
+
+      svg {
+        @include size(100%);
+        fill: $colorSecondary
+      }
+    }
+  }
+
+  .visited {
+    display: none;
+  }
+
   .icon-wrapper {
     @include aspect-ratio(1, 1);
     width: 100%;
@@ -15,18 +38,23 @@
     margin-bottom: .5rem;
   }
 
-  .book, .audio {
+  .book, .audio, .play-circle {
     position: absolute;
     @include size(45%);
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    stroke: $colorWhite;
-    fill: $colorWhite;
+    //stroke: $colorWhite;
+
 
     svg {
       @include size(100%);
+      fill: $colorWhite;
     }
+  }
+
+  .play-circle {
+    @include size(35%);
   }
 
   .title {
@@ -89,5 +117,14 @@
     display: inline-flex;
     text-decoration: none;
     z-index: 1;
+  }
+
+  .viewed {
+    width: 10rem;
+    color: $colorWhite;
+    background-color: $colorTertiary;
+    text-align: center;
+    margin: 1rem 0;
+    border-radius: 6px;
   }
 }
