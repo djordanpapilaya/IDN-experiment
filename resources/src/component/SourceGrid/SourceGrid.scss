@@ -1,0 +1,17 @@
+/* stylelint-disable-next-line block-no-empty */
+.source-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 5rem;
+  margin-bottom: 10rem;
+
+  .item {
+    display: block;
+    width: calc((100% / 15) - 2rem);
+    margin-bottom: 2.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
