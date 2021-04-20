@@ -5,10 +5,10 @@
   <div :class="[$style.sourceHeader]">
     <div :class="['wrapper']">
       <div :class="[$style.inner, 'content-wrapper']">
-        <a href="" :class="[$style.button, 'primary-button']">
+        <router-link to="/" :class="[$style.button, 'primary-button']">
           <Icon name="arrow-left" :class="[$style.icon]"/>
           Return to sources
-        </a>
+        </router-link>
         <h2 :class="[$style.title, 'heading-03']">What is climate change?</h2>
       </div>
     </div>
