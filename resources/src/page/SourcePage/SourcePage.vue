@@ -3,6 +3,7 @@
 
 <template>
   <div :class="[$style.sourcePage]">
-    <audio-player />
+    <source-header />
+    <audio-player :class="$style.audioPlayer" />
   </div>
 </template>

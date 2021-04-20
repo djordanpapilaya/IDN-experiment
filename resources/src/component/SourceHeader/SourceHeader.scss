@@ -1,0 +1,37 @@
+/* stylelint-disable-next-line block-no-empty */
+.source-header {
+  background: $colorWhite;
+  width: 100vw;
+
+  .inner {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: relative;
+  }
+
+  .button {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .title {
+    align-self: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .icon {
+    @include size(3rem, 1.5rem);
+    margin-right: 1rem;
+
+    svg {
+      @include size(100%);
+    }
+  }
+}

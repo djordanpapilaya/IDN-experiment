@@ -1,4 +1,8 @@
 /* stylelint-disable-next-line block-no-empty */
 .source-page {
-
+  .audio-player {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
