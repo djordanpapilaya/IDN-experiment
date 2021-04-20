@@ -19,6 +19,8 @@ export default {
       speaker: null,
       currentlyDragged: null,
       draggableClasses: null,
+      playTime: 0,
+      pauseTime: 0,
     };
   },
   methods: {
@@ -43,6 +45,8 @@ export default {
 
       this.player.addEventListener('timeupdate', this.updateProgress);
       this.player.addEventListener('ended', this.ended);
+      this.player.addEventListener('pause', this.pause);
+      this.player.addEventListener('play', this.play);
       this.player.addEventListener('loadedmetadata', () => {
         this.totalTime.textContent = this.formatTime(this.player.duration);
       });
@@ -79,6 +83,15 @@ export default {
         this.playPause.attributes.d.value = 'M18 12L0 24V0';
         this.player.pause();
       }
+    },
+    play() {
+      console.log('PLAY', this.player.currentTime);
+      this.playTime = this.player.currentTime;
+    },
+    pause() {
+      console.log('PAUSE', this.player.currentTime);
+      this.pauseTime = this.player.currentTime;
+      console.log('TOTAL_TIME', this.pauseTime - this.playTime);
     },
     isDraggable(el) {
       let canDrag = false;
