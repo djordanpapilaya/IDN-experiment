@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import axios from 'axios';
 import DeviceStateTracker from 'seng-device-state-tracker';
+import VueCoreVideoPlayer from 'vue-core-video-player'
 import VueExposePlugin from '../util/VueExposePlugin';
 import { URLNames, PropertyNames, VariableNames } from '../data/enum/configNames';
 import { RouteNames } from '../router/routes';
@@ -41,6 +42,8 @@ const initPlugins = () => {
     DeviceState: deviceState,
   });
 };
+
+Vue.use(VueCoreVideoPlayer)
 
 const waitForLocale = (store) =>
   new Promise((resolve) => {

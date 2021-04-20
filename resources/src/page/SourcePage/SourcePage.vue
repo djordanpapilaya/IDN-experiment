@@ -4,6 +4,7 @@
 <template>
   <div :class="[$style.sourcePage]">
     <source-header />
-    <audio-player :class="$style.audioPlayer" />
+<!--    <audio-player :class="$style.audioPlayer" />-->
+    <video-player :class="$style.videoPlayer" />
   </div>
 </template>

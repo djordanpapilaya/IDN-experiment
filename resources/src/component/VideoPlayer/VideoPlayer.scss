@@ -1,0 +1,26 @@
+/* stylelint-disable-next-line block-no-empty */
+.video-player {
+  height: calc(100vh - 15rem);
+
+  > div:first-child {
+    height: calc(100% - 7rem);
+  }
+}
+
+:global {
+  .vcp-progress-played {
+    background-color: $colorSecondary !important;
+  }
+
+  .btn-play {
+    path {
+      fill: $colorSecondary;
+    }
+  }
+
+  .btn-pause {
+    rect {
+      fill: $colorSecondary;
+    }
+  }
+}

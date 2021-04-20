@@ -2,6 +2,7 @@ import { AbstractPageTransitionComponent } from 'vue-transition-component';
 import SourcePageTransitionController from './SourcePageTransitionController';
 import SourceHeader from '../../component/SourceHeader';
 import AudioPlayer from '../../component/AudioPlayer';
+import VideoPlayer from '../../component/VideoPlayer';
 
 // @vue/component
 export default {
@@ -10,6 +11,7 @@ export default {
   components: {
     SourceHeader,
     AudioPlayer,
+    VideoPlayer,
   },
   methods: {
     handleAllComponentsReady() {
