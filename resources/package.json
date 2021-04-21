@@ -52,6 +52,7 @@
     "vue": "^2.2.5",
     "vue-core-video-player": "^0.2.0",
     "vue-i18n-manager": "^3.2.2",
+    "vue-pdf-app": "^2.0.0",
     "vue-router": "^3.4.1",
     "vue-transition-component": "^3.0.11",
     "vue-types": "^1.0.1",

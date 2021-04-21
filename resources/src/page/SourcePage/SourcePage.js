@@ -3,6 +3,7 @@ import SourcePageTransitionController from './SourcePageTransitionController';
 import SourceHeader from '../../component/SourceHeader';
 import AudioPlayer from '../../component/AudioPlayer';
 import VideoPlayer from '../../component/VideoPlayer';
+import PdfViewer from '../../component/PdfViewer';
 
 // @vue/component
 export default {
@@ -12,6 +13,7 @@ export default {
     SourceHeader,
     AudioPlayer,
     VideoPlayer,
+    PdfViewer,
   },
   methods: {
     handleAllComponentsReady() {

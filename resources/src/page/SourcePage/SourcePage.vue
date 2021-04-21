@@ -5,6 +5,7 @@
   <div :class="[$style.sourcePage]">
     <source-header />
 <!--    <audio-player :class="$style.audioPlayer" />-->
-    <video-player :class="$style.videoPlayer" />
+<!--    <video-player :class="$style.videoPlayer" />-->
+    <pdf-viewer :class="$style.pdfViewer" />
   </div>
 </template>

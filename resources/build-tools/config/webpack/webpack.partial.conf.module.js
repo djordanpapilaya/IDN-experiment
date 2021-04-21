@@ -231,7 +231,7 @@ module.exports = ({ config, isDevelopment }) => webpackConfig => {
           loader: 'modernizr-loader!json-loader',
         },
         {
-          test: /\.(glsl|txt)$/,
+          test: /\.(glsl|txt|pdf)$/,
           use: 'raw-loader',
         },
       ],

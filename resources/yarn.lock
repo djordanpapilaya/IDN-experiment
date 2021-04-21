@@ -12168,6 +12168,13 @@ vue-loader@^15.0.10:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-pdf-app@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/vue-pdf-app/-/vue-pdf-app-2.0.0.tgz#798566a567176b68e969a1df09a849a34e28dc63"
+  integrity sha512-M4iGQahOcGOaXrmzmiji45XGGr6h5KZLe8Dlrq2vUYhiVEgvY7OmddQjBoPT6TXUZ1pYrvpoYYn1V3UibbhUog==
+  dependencies:
+    vue "^2.6.11"
+
 vue-router@^3.4.1:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.4.3.tgz#fa93768616ee338aa174f160ac965167fa572ffa"
@@ -12226,7 +12233,7 @@ vue@^2.2.5:
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.11.tgz#76594d877d4b12234406e84e35275c6d514125c5"
   integrity sha512-VfPwgcGABbGAue9+sfrD4PuwFar7gPb1yl1UK1MwXoQPAw0BKSqWfoYCT/ThFrdEVWoI51dBuyCoiNU9bZDZxQ==
 
-vue@^2.6.10:
+vue@^2.6.10, vue@^2.6.11:
   version "2.6.12"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha512-uhmLFETqPPNyuLLbsKz6ioJ4q7AZHzD8ZVFNATNyICSZouqP2Sz0rotWQC8UNBF6VGSCs5abnKJoStA6JbCbfg==
