@@ -34,10 +34,10 @@ export default {
       const dropdownRightY = dropdownRect.y + dropdownRect.height;
       const placeholderRightY = placeholderRect.y + placeholderRect.height;
 
-      console.log(placeholderRect,
-      dropdownRect,
-        dropdownRightY,
-        placeholderRightY);
+      // console.log(placeholderRect,
+      // dropdownRect,
+      //   dropdownRightY,
+      //   placeholderRightY);
 
       if (dropdownRect.y < 0) {
         this.isInverted = true;
