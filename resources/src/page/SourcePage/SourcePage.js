@@ -19,6 +19,7 @@ export default {
     handleAllComponentsReady() {
       this.transitionController = new SourcePageTransitionController(this);
       this.isReady();
+      console.log('TRACK_SOURCE', 'SOURCE_ID');
     },
   },
 };
