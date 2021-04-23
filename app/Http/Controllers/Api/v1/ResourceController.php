@@ -13,10 +13,12 @@ class ResourceController extends Controller
 	{
 		$data = Resource::all();
 
-		return $data;
+		return response($data)
+			->header('Access-Control-Allow-Origin', '*');
 	}
 	public function show(\App\Models\Resource $resource)
 	{
-		return $resource;
+		return response($resource)
+			->header('Access-Control-Allow-Origin', '*');
 	}
 }
