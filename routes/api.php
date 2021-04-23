@@ -15,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 Route::get('/resources', function (Request $request) {
 	return $request->resource();
+});
+
+Route::prefix('v1')
+	->namespace('Api\v1')
+	->group( function () {
+		Route::get('user/{userID}', 'UserController@index');
 });
