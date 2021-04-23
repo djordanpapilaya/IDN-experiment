@@ -1,10 +1,14 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
+import VueTypes from 'vue-types';
 import VideoPlayerTransitionController from './VideoPlayerTransitionController';
 
 // @vue/component
 export default {
   name: 'VideoPlayer',
   extends: AbstractTransitionComponent,
+  props: {
+    data: VueTypes.any.isRequired,
+  },
   data(){
     return {
       playTime: 0,

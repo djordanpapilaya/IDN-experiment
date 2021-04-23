@@ -24,7 +24,7 @@
       </div>
 
       <audio crossorigin ref="player" preload="auto">
-        <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/Swing_Jazz_Drum.mp3" type="audio/mpeg">
+        <source :src="data.path" type="audio/mpeg">
       </audio>
     </div>
   </div>

@@ -19,7 +19,9 @@ const config = {
     [EnvironmentNames.LOCAL]: {
       extends: EnvironmentNames.DEVELOPMENT,
       variables: {},
-      urls: {},
+      urls: {
+        [URLNames.API]: `https://IDN/api/v1/`,
+      },
     },
   },
   variables: {
@@ -32,7 +34,7 @@ const config = {
     [VariableNames.PUBLIC_PATH]: window.webpackPublicPath || process.env.PUBLIC_PATH,
   },
   urls: {
-    [URLNames.API]: `${process.env.PUBLIC_PATH}api/`,
+    [URLNames.API]: `${process.env.PUBLIC_PATH}api/v1/`,
   },
   properties: {
     [PropertyNames.DEFAULT_LOCALE]: 'en-gb',

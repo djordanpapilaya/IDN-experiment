@@ -9,7 +9,7 @@
           <Icon name="arrow-left" :class="[$style.icon]"/>
           Return to sources
         </router-link>
-        <h2 :class="[$style.title, 'heading-03']">What is climate change?</h2>
+        <h2 :class="[$style.title, 'heading-03']">{{data.title}}</h2>
       </div>
     </div>
   </div>

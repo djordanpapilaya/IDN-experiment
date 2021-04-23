@@ -1,5 +1,6 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
 import VuePdfApp from "vue-pdf-app";
+import VueTypes from 'vue-types';
 import "vue-pdf-app/dist/icons/main.css";
 import PdfViewerTransitionController from './PdfViewerTransitionController';
 
@@ -7,6 +8,9 @@ import PdfViewerTransitionController from './PdfViewerTransitionController';
 export default {
   name: 'PdfViewer',
   extends: AbstractTransitionComponent,
+  props: {
+    data: VueTypes.any.isRequired,
+  },
   watch: {
     currentPage(newValue, oldValue) {
       this.trackPage(newValue);
@@ -67,6 +71,7 @@ export default {
     handleAllComponentsReady() {
       this.transitionController = new PdfViewerTransitionController(this);
       this.isReady();
+      this.trackPage(1);
     },
     afterCreatedHandler(pdfApp) {
       // this.pdfApp is non-reactive because it is not in data

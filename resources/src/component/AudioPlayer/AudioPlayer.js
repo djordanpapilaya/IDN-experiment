@@ -1,10 +1,14 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
+import VueTypes from 'vue-types';
 import AudioPlayerTransitionController from './AudioPlayerTransitionController';
 
 // @vue/component
 export default {
   name: 'AudioPlayer',
   extends: AbstractTransitionComponent,
+  props: {
+    data: VueTypes.any.isRequired,
+  },
   data() {
     return {
       player: null,

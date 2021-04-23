@@ -9,7 +9,8 @@ export default {
   extends: AbstractTransitionComponent,
   props: {
     visited: VueTypes.bool.def(false).isRequired,
-    type: VueTypes.string.isRequired
+    type: VueTypes.string.isRequired,
+    data: VueTypes.any.isRequired,
   },
   data() {
     return {

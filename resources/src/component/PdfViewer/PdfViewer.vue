@@ -3,6 +3,6 @@
 
 <template>
   <div :class="[$style.pdfViewer]">
-    <vue-pdf-app pdf="../../static/examples.pdf" :config="config" @after-created="afterCreatedHandler" />
+    <vue-pdf-app :pdf="data.path" :config="config" @after-created="afterCreatedHandler" />
   </div>
 </template>
