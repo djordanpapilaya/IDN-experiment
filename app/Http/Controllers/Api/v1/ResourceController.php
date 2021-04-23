@@ -7,12 +7,16 @@ use App\Models\Resource;
 use eloquentFilter\QueryFilter\ModelFilters\ModelFilters;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ResourceController extends Controller
 {
 	public function index()
 	{
 		$data = Resource::all();
 
 		return $data;
+	}
+	public function show(\App\Models\Resource $resource)
+	{
+		return $resource;
 	}
 }

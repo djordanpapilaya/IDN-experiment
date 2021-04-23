@@ -25,5 +25,6 @@ Route::get('/resources', function (Request $request) {
 Route::prefix('v1')
 	->namespace('Api\v1')
 	->group( function () {
-		Route::get('user/{userID}', 'UserController@index');
+		Route::get('resources', 'ResourceController@index');
+		Route::get('resource/{resource}', 'ResourceController@show');
 });
