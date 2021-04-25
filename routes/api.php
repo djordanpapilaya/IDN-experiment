@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +28,6 @@ Route::prefix('v1')
 	->group( function () {
 		Route::get('resources', 'ResourceController@index');
 		Route::get('resource/{resource}', 'ResourceController@show');
+		Route::post('route', 'RouteController@store');
+		Route::post('logout', 'AuthenticatedSessionController@destroy');
 });

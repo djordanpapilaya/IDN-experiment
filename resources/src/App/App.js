@@ -33,6 +33,7 @@ export default {
     this.setDeviceState(this.$deviceStateTracker.currentState);
 
     this.initResources();
+    this.initListener();
   },
   methods: {
     ...mapMutations({
@@ -53,6 +54,19 @@ export default {
       }).then(() => {
         this.resourcesLoaded = true;
       });
+    },
+    initListener() {
+      // const gateway = getValue(GATEWAY);
+      //
+      // window.addEventListener('beforeunload', function (e) {
+      //   const confirmationMessage = '\o/';
+      //
+      //   (e || window.event).returnValue = confirmationMessage; //Gecko + IE
+      //   e.preventDefault();
+      //   gateway.post('logout').then(() => {
+      //     return confirmationMessage;                            //Webkit, Safari, Chrome
+      //   });
+      // });
     },
   },
 };

@@ -22,6 +22,6 @@ class RouteEvents extends Model
 		'session_id',
 		'resource_id',
 		'user_id',
-		'user_id',
+		'times_visited',
 	];
 }

@@ -14,13 +14,14 @@ class CreateSessionsTable extends Migration
     public function up()
     {
         Schema::create('sessions', function (Blueprint $table) {
-            $table->id();
+	        $table->id();
+	        $table->timestamps();
 	        $table->unsignedBigInteger('user_id');
 	        $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
-            $table->timestamp('start_time');
-	        $table->timestamp('end_time');
-	        $table->time('total_time');
+	        $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+	        $table->text('start_time')->nullable();
+	        $table->text('end_time')->nullable();
         });
     }
 
