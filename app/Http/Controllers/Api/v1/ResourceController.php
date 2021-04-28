@@ -7,6 +7,7 @@ use App\Models\AudioEvents;
 use App\Models\Resource;
 use App\Models\Sessions;
 use App\Models\TextEvents;
+use App\Models\TimeEvents;
 use App\Models\VideoEvents;
 use eloquentFilter\QueryFilter\ModelFilters\ModelFilters;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class ResourceController extends Controller
 		return response($data)
 			->header('Access-Control-Allow-Origin', '*');
 	}
+
 	public function show(\App\Models\Resource $resource)
 	{
 		return response($resource)
@@ -91,6 +93,41 @@ class ResourceController extends Controller
 		]);
 
 		return response()->json(['ok'], 201);
+	}
+
+	public function storeTime(Request $request)
+	{
+		$timeModel = new TimeEvents;
+
+		if (\Auth::user()) {
+			$user_id = \Auth::user()->id;
+		} else {
+//			ONLY FOR TESTING PURPOSES IN DEV ENV
+			$user_id = 1;
+		}
+
+		$startTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $request['time_started']);
+		$endTime = \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $request['time_ended']);
+		$diff_in_seconds = $endTime->diffInRealSeconds($startTime);
+
+		$totalTime = gmdate("H:i:s", $diff_in_seconds);
+
+		$timeModel::create([
+			'session_id' => $this->getSession($user_id),
+			'user_id' => $user_id,
+			'resource_id' => $request['resource_id'],
+			'time_started' => $request['time_started'],
+			'time_ended' => $request['time_ended'],
+			'total_time' => $totalTime,
+		]);
+
+		return response()->json(['ok'], 201);
+	}
+
+	public function getCreatedAtAttribute($timestamp)
+	{
+		$time = new \DateTime();
+		return \Carbon\Carbon::parse($time)->format('Y-m-d H:s:i');
 	}
 
 	public function getSession($user_id)

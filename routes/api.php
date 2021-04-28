@@ -34,6 +34,7 @@ Route::prefix('v1')
 		Route::post('event/video', 'ResourceController@storeVideo');
 		Route::post('event/audio', 'ResourceController@storeAudio');
 		Route::post('event/text', 'ResourceController@storeText');
+		Route::post('event/time', 'ResourceController@storeTime');
 		Route::post('route', 'RouteController@store');
 		Route::post('logout', 'AuthenticatedSessionController@destroy');
 });

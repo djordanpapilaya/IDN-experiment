@@ -1,4 +1,5 @@
 import { AbstractPageTransitionComponent } from 'vue-transition-component';
+import moment from 'moment';
 import SourcePageTransitionController from './SourcePageTransitionController';
 import SourceHeader from '../../component/SourceHeader';
 import AudioPlayer from '../../component/AudioPlayer';
@@ -17,6 +18,8 @@ export default {
     return {
       resourceLoaded: false,
       data: null,
+      startTime: 0,
+      endTime: 0,
     };
   },
   components: {
@@ -36,6 +39,7 @@ export default {
     handleAllComponentsReady() {
       this.transitionController = new SourcePageTransitionController(this);
       this.isReady();
+      this.startTime = moment().format('YYYY-MM-DD HH:mm:ss');
     },
     loadResource() {
       const gateway = getValue(GATEWAY);
@@ -68,4 +72,17 @@ export default {
       });
     }
   },
+  beforeRouteLeave (to, from , next) {
+    this.endTime = moment().format('YYYY-MM-DD HH:mm:ss');
+    const gateway = getValue(GATEWAY);
+    const id = this.data.id;
+
+    gateway.post('event/time', {
+      'resource_id': id,
+      'time_started': this.startTime,
+      'time_ended': this.endTime,
+    }).then(() => {
+      next();
+    });
+  }
 };
