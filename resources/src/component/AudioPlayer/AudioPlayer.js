@@ -1,6 +1,9 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
 import VueTypes from 'vue-types';
 import AudioPlayerTransitionController from './AudioPlayerTransitionController';
+import { mapState } from 'vuex';
+import { getValue } from '../../util/injector';
+import { GATEWAY } from '../../data/Injectables';
 
 // @vue/component
 export default {
@@ -8,6 +11,11 @@ export default {
   extends: AbstractTransitionComponent,
   props: {
     data: VueTypes.any.isRequired,
+  },
+  computed: {
+    ...mapState({
+      resource: (state) => state.app.resource,
+    }),
   },
   data() {
     return {
@@ -93,9 +101,20 @@ export default {
       this.playTime = this.player.currentTime;
     },
     pause() {
-      console.log('PAUSE', this.player.currentTime);
+      const gateway = getValue(GATEWAY);
+      const id = this.resource.id;
       this.pauseTime = this.player.currentTime;
-      console.log('TOTAL_TIME', this.pauseTime - this.playTime);
+
+      gateway.post('event/audio', {
+        'resource_id': id,
+        'start_time': this.playTime,
+        'end_time': this.pauseTime,
+        'sequence_time': this.pauseTime - this.playTime,
+      }).then(() => {
+        console.log('TRACK_AUDIO PLAY', this.playTime);
+        console.log('TRACK_AUDIO PAUSE', this.pauseTime);
+        console.log('TRACK_AUDIO TOTAL_TIME', this.pauseTime - this.playTime);
+      });
     },
     isDraggable(el) {
       let canDrag = false;

@@ -52,7 +52,7 @@ export default {
       const gateway = getValue(GATEWAY);
       const id = this.data.id;
 
-      gateway.post('route', {
+      gateway.post('event/route', {
         'resource_id': id,
       }).then(() => {
         console.log('TRACK_SOURCE', id);

@@ -18,8 +18,10 @@ class CreateTextEventsTable extends Migration
             $table->timestamps();
 	        $table->unsignedBigInteger('session_id');
 	        $table->unsignedBigInteger('resource_id');
+	        $table->unsignedBigInteger('user_id');
 	        $table->foreign('session_id')->references('id')->on('sessions');
 	        $table->foreign('resource_id')->references('id')->on('resources');
+	        $table->foreign('user_id')->references('id')->on('users');
 	        $table->integer('page_visit');
         });
     }

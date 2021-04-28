@@ -30,6 +30,10 @@ Route::prefix('v1')
 		Route::get('resource/{resource}', 'ResourceController@show');
 		Route::get('user/session', 'UserController@sessionTime');
 		Route::get('user/session/update', 'UserController@setUserSession');
+		Route::post('event/route', 'RouteController@store');
+		Route::post('event/video', 'ResourceController@storeVideo');
+		Route::post('event/audio', 'ResourceController@storeAudio');
+		Route::post('event/text', 'ResourceController@storeText');
 		Route::post('route', 'RouteController@store');
 		Route::post('logout', 'AuthenticatedSessionController@destroy');
 });
