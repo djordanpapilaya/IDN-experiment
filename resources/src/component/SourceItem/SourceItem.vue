@@ -3,7 +3,7 @@
 
 <template>
   <div :class="[$style.sourceItem, {[$style.hasVisited]: data.watched}]" @mouseover="handleMouseover" @mouseleave="handleMouseleave">
-    <router-link :to="'resource/'+data.uuid" :class="[$style.iconWrapper]" ref="icon">
+    <router-link :to="'resource/'+data.uuid" :class="[$style.iconWrapper, 'js-icon']" ref="icon">
       <Icon name="book" :class="[$style.book]" v-if="data.type == 'text'"/>
       <Icon name="audio" :class="[$style.audio]" v-if="data.type == 'audio'" />
       <Icon name="play-circle" :class="[$style.playCircle]" v-if="data.type == 'video'" />
@@ -11,7 +11,7 @@
     </router-link>
     <p :class="[$style.title, 'copy-02']">{{data.title}}</p>
 
-    <div :class="[$style.overlay, {[$style.isInverted]: isInverted}, {[$style.isRight]: isRight}]" ref="overlay">
+    <div :class="['js-overlay', $style.overlay, {[$style.isInverted]: isInverted}, {[$style.isRight]: isRight}]" ref="overlay">
       <div v-if="data.watched" :class="[$style.viewed, 'heading-04']">
         Viewed
       </div>

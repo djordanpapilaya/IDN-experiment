@@ -27,8 +27,8 @@ export default {
     handlePosition() {
       const screenPadding = 16;
 
-      const placeholderRect = this.$refs.icon.getBoundingClientRect();
-      const dropdownRect = this.$refs.overlay.getBoundingClientRect();
+      const placeholderRect = this.$el.querySelector('.js-icon').getBoundingClientRect();
+      const dropdownRect = this.$el.querySelector('.js-overlay').getBoundingClientRect();
 
       const dropdownRightX = dropdownRect.x + dropdownRect.width;
       const placeholderRightX = placeholderRect.x + placeholderRect.width;
