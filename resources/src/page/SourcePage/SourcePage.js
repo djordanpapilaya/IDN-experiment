@@ -7,7 +7,7 @@ import PdfViewer from '../../component/PdfViewer';
 import { getValue } from '../../util/injector';
 import { GATEWAY } from '../../data/Injectables';
 import { mapMutations } from 'vuex';
-import { SET_RESOURCE } from '../../store/module/app/app';
+import { SET_RESOURCE, SET_RESOURCES } from '../../store/module/app/app';
 
 // @vue/component
 export default {
@@ -31,6 +31,7 @@ export default {
   methods: {
     ...mapMutations({
       setResource: SET_RESOURCE,
+      setResources: SET_RESOURCES,
     }),
     handleAllComponentsReady() {
       this.transitionController = new SourcePageTransitionController(this);
@@ -56,7 +57,15 @@ export default {
         'resource_id': id,
       }).then(() => {
         console.log('TRACK_SOURCE', id);
+        this.loadNewResourceList();
       });
     },
+    loadNewResourceList() {
+      const gateway = getValue(GATEWAY);
+
+      gateway.get('resources').then((result) => {
+        this.setResources(result.data);
+      });
+    }
   },
 };
