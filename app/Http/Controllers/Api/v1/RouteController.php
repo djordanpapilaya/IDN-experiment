@@ -19,6 +19,9 @@ class RouteController extends Controller
 	    if (\Auth::user()) {
 		    $user_id = \Auth::user()->id;
 		    $session = $request->session()->get('id');
+	    } else {
+//			ONLY FOR TESTING PURPOSES IN DEV ENV
+		    $user_id = 1;
 	    }
 //	    $this->getTimesVisited($request['resource_id'], $user_id);
 

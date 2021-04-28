@@ -21,10 +21,13 @@ class UserController extends Controller
 	{
 		$totalTime = 0;
 //		TODO SET CORRECT NUMB OF MINUTES
-		$experimentTimeMinutes = 2400;
+		$experimentTimeMinutes = 240;
 
 		if (\Auth::user()) {
 			$user_id = \Auth::user()->id;
+		} else {
+//			ONLY FOR TESTING PURPOSES IN DEV ENV
+			$user_id = 1;
 		}
 
 		$userSessions = Sessions::where('user_id', $user_id)
@@ -69,6 +72,9 @@ class UserController extends Controller
 
 		if (\Auth::user()) {
 			$user_id = \Auth::user()->id;
+		} else {
+//			ONLY FOR TESTING PURPOSES IN DEV ENV
+			$user_id = 1;
 		}
 
 		$userSessions = Sessions::where('user_id', $user_id)

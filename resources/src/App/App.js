@@ -1,7 +1,7 @@
 import { DeviceStateEvent } from 'seng-device-state-tracker';
 import { mapMutations, mapState } from 'vuex';
 import { FlowManager, AbstractRegistrableComponent } from 'vue-transition-component';
-import { SET_DEVICE_STATE, SET_RESOURCES } from '../store/module/app/app';
+import { SET_DEVICE_STATE, SET_RESOURCES, SET_TIME } from '../store/module/app/app';
 import { RouteNames } from '../router/routes';
 import MainHeader from '../component/MainHeader';
 import MainFooter from '../component/MainFooter';
@@ -19,6 +19,7 @@ export default {
   data() {
     return {
       resourcesLoaded: false,
+      sessionInterval: null,
     };
   },
   components: {
@@ -33,12 +34,13 @@ export default {
     this.setDeviceState(this.$deviceStateTracker.currentState);
 
     this.initResources();
-    this.initListener();
+    this.initTimer();
   },
   methods: {
     ...mapMutations({
       setDeviceState: SET_DEVICE_STATE,
       setResources: SET_RESOURCES,
+      setTime: SET_TIME,
     }),
     handleDeviceStateUpdate(event) {
       this.setDeviceState(event.data.state);
@@ -55,18 +57,20 @@ export default {
         this.resourcesLoaded = true;
       });
     },
-    initListener() {
-      // const gateway = getValue(GATEWAY);
-      //
-      // window.addEventListener('beforeunload', function (e) {
-      //   const confirmationMessage = '\o/';
-      //
-      //   (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-      //   e.preventDefault();
-      //   gateway.post('logout').then(() => {
-      //     return confirmationMessage;                            //Webkit, Safari, Chrome
-      //   });
-      // });
+    initTimer() {
+      const gateway = getValue(GATEWAY);
+
+      gateway.get('user/session/update').then(() => {
+      });
+
+      this.sessionInterval = setInterval(() => {
+        gateway.get('user/session/update').then(() => {
+        });
+      }, 60000);
+
+      gateway.get('user/session').then((result) => {
+        this.setTime(result.data);
+      });
     },
   },
 };

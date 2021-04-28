@@ -40,7 +40,7 @@ class Resource extends Model
 	{
 		parent::boot();
 
-		static::creating(function( $query ) {
+		static::creating(function ($query) {
 
 			$query->uuid = Str::uuid()->toString();
 
@@ -73,8 +73,12 @@ class Resource extends Model
 
 			return $this->hasMany('\App\Models\RouteEvents', 'resource_id', 'id')
 				->where('user_id', $user_id);
-		}
+		} else {
+//			ONLY FOR TESTING PURPOSES IN DEV ENV
+			$user_id = 1;
 
-		return null;
+			return $this->hasMany('\App\Models\RouteEvents', 'resource_id', 'id')
+				->where('user_id', $user_id);
+		}
 	}
 }

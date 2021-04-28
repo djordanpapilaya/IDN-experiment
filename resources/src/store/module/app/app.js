@@ -3,12 +3,14 @@ const namespace = 'app';
 export const SET_DEVICE_STATE = `${namespace}/setDeviceState`;
 export const SET_RESOURCES = `${namespace}/setResources`;
 export const SET_RESOURCE = `${namespace}/setResource`;
+export const SET_TIME = `${namespace}/setTime`;
 
 export default {
   state: {
     deviceState: null,
     resources: null,
     resource: null,
+    time: null,
   },
   getters: {},
   mutations: {
@@ -20,6 +22,9 @@ export default {
     },
     [SET_RESOURCE](state, resource) {
       state.resource = resource;
+    },
+    [SET_TIME](state, time) {
+      state.time = time;
     },
   },
   actions: {},
