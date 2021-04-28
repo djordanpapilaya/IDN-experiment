@@ -178,3 +178,7 @@ PERFORMANCE OF THIS SOFTWARE.
  * @licend The above is the entire license notice for the
  * Javascript code in this page
  */
+
+//! moment.js
+
+//! moment.js locale configuration

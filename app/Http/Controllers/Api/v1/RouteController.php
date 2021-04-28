@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
 use App\Models\RouteEvents;
+use App\Models\Sessions;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -18,15 +19,17 @@ class RouteController extends Controller
 
 	    if (\Auth::user()) {
 		    $user_id = \Auth::user()->id;
-		    $session = $request->session()->get('id');
 	    } else {
 //			ONLY FOR TESTING PURPOSES IN DEV ENV
 		    $user_id = 1;
 	    }
-//	    $this->getTimesVisited($request['resource_id'], $user_id);
+
+	    $userSessions = Sessions::where('user_id', $user_id)
+		    ->orderBy('id', 'DESC')
+		    ->first();
 
 	    $route::create([
-		    'session_id' => $session,
+		    'session_id' => $userSessions->id,
 		    'user_id' => $user_id,
 		    'resource_id' => $request['resource_id'],
 		    'times_visited' => $this->getTimesVisited($request['resource_id'], $user_id) + 1,

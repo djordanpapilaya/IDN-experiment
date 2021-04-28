@@ -35,22 +35,28 @@ export default {
     handleAllComponentsReady() {
       this.transitionController = new SourcePageTransitionController(this);
       this.isReady();
-      this.trackResource();
     },
     loadResource() {
       const gateway = getValue(GATEWAY);
       const path = this.$route.params.name;
-      console.log(path);
 
       gateway.get('resource/' + path).then((result) => {
         this.setResource(result.data);
         this.data = result.data;
       }).then(() => {
         this.resourceLoaded = true;
+        this.trackResource();
       });
     },
     trackResource() {
-      console.log('TRACK_SOURCE', 'SOURCE_ID');
+      const gateway = getValue(GATEWAY);
+      const id = this.data.id;
+
+      gateway.post('route', {
+        'resource_id': id,
+      }).then(() => {
+        console.log('TRACK_SOURCE', id);
+      });
     },
   },
 };

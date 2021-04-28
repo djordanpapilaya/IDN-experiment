@@ -26,10 +26,6 @@ class Resource extends Model
 		'image_path',
 	];
 
-	protected $hidden = [
-		'id'
-	];
-
 	public $timestamps = true;
 
 	protected $appends = [
