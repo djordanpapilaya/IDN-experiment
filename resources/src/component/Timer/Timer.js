@@ -15,6 +15,7 @@ export default {
       hours: 0,
       minutes: 0,
       seconds: 0,
+      timerReady: false,
     };
   },
   computed: {
@@ -29,6 +30,7 @@ export default {
       setTimeout(() => {
         this.setExperimentTime();
         this.startTimer();
+        this.timerReady = true;
       }, 1000);
     },
     startTimer() {
@@ -36,8 +38,6 @@ export default {
       interval = 1000; // 1 second
       currentTime = moment();
       eventTime = moment().add(this.time.experiment_time, 'minutes').subtract(this.time.total_time, 'minutes');
-
-      console.log(currentTime, eventTime);
 
       duration = moment.duration(eventTime.diff(currentTime));
 
