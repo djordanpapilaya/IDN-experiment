@@ -28,6 +28,8 @@ Route::prefix('v1')
 	->group( function () {
 		Route::get('resources', 'ResourceController@index');
 		Route::get('resource/{resource}', 'ResourceController@show');
+		Route::get('user/session', 'UserController@sessionTime');
+		Route::get('user/session/update', 'UserController@setUserSession');
 		Route::post('route', 'RouteController@store');
 		Route::post('logout', 'AuthenticatedSessionController@destroy');
 });

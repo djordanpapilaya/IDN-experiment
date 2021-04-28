@@ -22,6 +22,7 @@ class CreateSessionsTable extends Migration
             $table->text('user_agent')->nullable();
 	        $table->text('start_time')->nullable();
 	        $table->text('end_time')->nullable();
+	        $table->text('total_time')->nullable();
         });
     }
 

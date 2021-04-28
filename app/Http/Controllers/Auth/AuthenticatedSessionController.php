@@ -57,7 +57,7 @@ class AuthenticatedSessionController extends Controller
 
 	public function showDestroy(Request $request)
 	{
-		$this->closeSession($request);
+//		$this->closeSession($request);
 
 		Auth::guard('web')->logout();
 
@@ -76,7 +76,8 @@ class AuthenticatedSessionController extends Controller
 	 */
 	public function destroy(Request $request)
 	{
-		$this->closeSession($request);
+//		NOT USING THIS FUNCTIONALITY ANYMORE
+//		$this->closeSession($request);
 
 		Auth::guard('web')->logout();
 
@@ -96,6 +97,5 @@ class AuthenticatedSessionController extends Controller
 		$sessionObj = Sessions::where('user_id', $user_id)
 			->where('end_time', '=', null)
 			->update(['end_time' => $current_time]);
-
 	}
 }
