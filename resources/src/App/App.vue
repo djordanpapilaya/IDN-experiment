@@ -7,6 +7,7 @@
     <transition @leave="onLeave">
       <router-view />
     </transition>
+    <guide v-if="!guideWatched" />
     <main-footer />
   </div>
 </template>

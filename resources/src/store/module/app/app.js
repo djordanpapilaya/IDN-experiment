@@ -4,6 +4,8 @@ export const SET_DEVICE_STATE = `${namespace}/setDeviceState`;
 export const SET_RESOURCES = `${namespace}/setResources`;
 export const SET_RESOURCE = `${namespace}/setResource`;
 export const SET_TIME = `${namespace}/setTime`;
+export const SET_USER_DATA = `${namespace}/setUserData`;
+export const SET_GUIDE_WATCHED = `${namespace}/setGuideWatched`;
 
 export default {
   state: {
@@ -11,6 +13,8 @@ export default {
     resources: null,
     resource: null,
     time: null,
+    userData: null,
+    guideWatched: null,
   },
   getters: {},
   mutations: {
@@ -25,6 +29,12 @@ export default {
     },
     [SET_TIME](state, time) {
       state.time = time;
+    },
+    [SET_USER_DATA](state, userData) {
+      state.userData = userData;
+    },
+    [SET_GUIDE_WATCHED](state, guideWatched) {
+      state.guideWatched = guideWatched;
     },
   },
   actions: {},

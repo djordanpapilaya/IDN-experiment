@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Models\Resource;
 use App\Models\Sessions;
+use App\Models\User;
 use eloquentFilter\QueryFilter\ModelFilters\ModelFilters;
 use Illuminate\Http\Request;
 
@@ -29,13 +30,23 @@ class UserController extends Controller
 		$userSessions = Sessions::where('user_id', $user_id)
 			->get();
 
+		$userData = User::where('id', $user_id)
+			->get();
+
 		$userFirstTime = \sizeof($userSessions) <= 1;
+
+		foreach ($userData as $data)
+		{
+			$firstName = $data->first_name;
+			$lastName = $data->last_name;
+			$email = $data->email;
+		}
 
 		return response()->json([
 			'firstSession' => $userFirstTime,
-			'firstName' => \Auth::user()->first_name,
-			'lastName' => \Auth::user()->last_name,
-			'email' => \Auth::user()->email,
+			'firstName' => $firstName,
+			'lastName' => $lastName,
+			'email' => $email,
 		]);
 	}
 
