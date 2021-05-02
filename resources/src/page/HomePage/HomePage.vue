@@ -3,7 +3,6 @@
 
 <template>
   <div :class="[$style.homepage]">
-    FILTER
     <source-grid />
   </div>
 </template>
