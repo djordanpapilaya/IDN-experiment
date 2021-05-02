@@ -17,6 +17,28 @@ class UserController extends Controller
 		return $data;
 	}
 
+	public function userData(Request $request)
+	{
+		if (\Auth::user()) {
+			$user_id = \Auth::user()->id;
+		} else {
+//			ONLY FOR TESTING PURPOSES IN DEV ENV
+			$user_id = 1;
+		}
+
+		$userSessions = Sessions::where('user_id', $user_id)
+			->get();
+
+		$userFirstTime = \sizeof($userSessions) <= 1;
+
+		return response()->json([
+			'firstSession' => $userFirstTime,
+			'firstName' => \Auth::user()->first_name,
+			'lastName' => \Auth::user()->last_name,
+			'email' => \Auth::user()->email,
+		]);
+	}
+
 	public function sessionTime(Request $request)
 	{
 		$totalTime = 0;
