@@ -36,7 +36,7 @@ export default {
       this.currentStep = 4;
     },
     close() {
-      this.currentStep = 5;
+      this.currentStep = 1;
       this.setGuideWatched(true);
     }
   },

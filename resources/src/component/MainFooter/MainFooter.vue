@@ -4,6 +4,9 @@
 <template>
   <div :class="[$style.mainFooter, 'wrapper']">
     <div :class="[$style.footer, 'content-wrapper']">
+      <a :class="[$style.button, $style.buttonRed, 'button primary-button']" @click="handleHelp">
+        HELP
+      </a>
       <a :class="[$style.button, 'button primary-button']" @click="handlePopupPause">
         Pause experiment
       </a>

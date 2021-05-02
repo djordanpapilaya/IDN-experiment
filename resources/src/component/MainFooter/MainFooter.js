@@ -1,5 +1,9 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
 import MainFooterTransitionController from './MainFooterTransitionController';
+import { mapMutations } from 'vuex';
+import {
+  SET_GUIDE_WATCHED,
+} from '../../store/module/app/app';
 
 // @vue/component
 export default {
@@ -12,6 +16,9 @@ export default {
     };
   },
   methods: {
+    ...mapMutations({
+      setGuideWatched: SET_GUIDE_WATCHED,
+    }),
     handleAllComponentsReady() {
       this.transitionController = new MainFooterTransitionController(this);
       this.isReady();
@@ -32,5 +39,8 @@ export default {
       this.closeOpen = false;
       this.pauseOpen = false;
     },
+    handleHelp() {
+      this.setGuideWatched(false);
+    }
   },
 };
