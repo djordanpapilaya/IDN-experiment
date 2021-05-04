@@ -3,6 +3,8 @@ import VuePdfApp from "vue-pdf-app";
 import VueTypes from 'vue-types';
 import "vue-pdf-app/dist/icons/main.css";
 import PdfViewerTransitionController from './PdfViewerTransitionController';
+import { getValue } from '../../util/injector';
+import { GATEWAY } from '../../data/Injectables';
 
 // @vue/component
 export default {
@@ -83,7 +85,15 @@ export default {
       }, 1000);
     },
     trackPage(newPage) {
-      console.log('TRACK_PAGE_VIEW', newPage);
+      const gateway = getValue(GATEWAY);
+      const id = this.data.id;
+
+      gateway.post('event/text', {
+        'resource_id': id,
+        'page_visit': newPage,
+      }).then(() => {
+        console.log('TRACK_PAGE_VIEW', newPage);
+      });
     },
   },
   beforeDestroy() {
