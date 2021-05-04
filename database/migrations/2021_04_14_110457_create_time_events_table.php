@@ -22,9 +22,9 @@ class CreateTimeEventsTable extends Migration
 	        $table->foreign('session_id')->references('id')->on('sessions');
 	        $table->foreign('resource_id')->references('id')->on('resources');
 	        $table->foreign('user_id')->references('id')->on('users');
-	        $table->timestamp('time_started')->default(\DB::raw('CURRENT_TIMESTAMP'));
-	        $table->timestamp('time_ended')->default(\DB::raw('CURRENT_TIMESTAMP'));
-	        $table->time('total_time');
+	        $table->timestamp('time_started')->nullable();
+	        $table->timestamp('time_ended')->nullable();
+	        $table->time('total_time')->nullable();
         });
     }
 
