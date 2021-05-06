@@ -3,11 +3,12 @@
 
 <template>
   <div :class="[$style.app]" v-if="resourcesLoaded">
-    <main-header />
+    <main-header ref="header" />
     <transition @leave="onLeave">
       <router-view />
     </transition>
     <guide v-if="!guideWatched" />
     <main-footer />
+    <inactive-window @cancel="handleInactiveCancel" v-if="inactiveWindow" />
   </div>
 </template>

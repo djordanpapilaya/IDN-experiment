@@ -25,9 +25,11 @@ export default {
     },
     handlePopupPause() {
       this.pauseOpen = true;
+      this.$parent.pauseTimer();
     },
     handlePopupFinish() {
       this.closeOpen = true;
+      this.$parent.pauseTimer();
     },
     handleStop() {
 
@@ -38,6 +40,7 @@ export default {
     handleCancel() {
       this.closeOpen = false;
       this.pauseOpen = false;
+      this.$parent.playTimer();
     },
     handleHelp() {
       this.setGuideWatched(false);

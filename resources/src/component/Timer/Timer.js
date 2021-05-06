@@ -1,7 +1,10 @@
 import { AbstractTransitionComponent } from 'vue-transition-component';
 import moment from 'moment';
-import { mapState } from 'vuex';
+import { mapMutations, mapState } from 'vuex';
 import TimerTransitionController from './TimerTransitionController';
+import { SET_TIME } from '../../store/module/app/app';
+import { getValue } from '../../util/injector';
+import { GATEWAY } from '../../data/Injectables';
 
 // @vue/component
 export default {
@@ -16,6 +19,7 @@ export default {
       minutes: 0,
       seconds: 0,
       timerReady: false,
+      timer: null,
     };
   },
   computed: {
@@ -24,6 +28,9 @@ export default {
     }),
   },
   methods: {
+    ...mapMutations({
+      setTime: SET_TIME,
+    }),
     handleAllComponentsReady() {
       this.transitionController = new TimerTransitionController(this);
       this.isReady();
@@ -41,7 +48,7 @@ export default {
 
       duration = moment.duration(eventTime.diff(currentTime));
 
-      setInterval(() => {
+      this.timer = setInterval(() => {
         // get updated duration
         duration = moment.duration(duration - interval, 'milliseconds');
         this.duration = moment.duration(duration - interval, 'milliseconds');
@@ -67,6 +74,14 @@ export default {
       const startTime = moment().add(this.time.experiment_time, 'minutes');
 
       this.experimentTime = moment.duration(startTime.diff(currentTime));
+    },
+    pauseTimer() {
+      clearInterval(this.timer);
+    },
+    playTimer() {
+      this.setExperimentTime();
+      this.startTimer();
+      this.timerReady = true;
     }
   },
 };

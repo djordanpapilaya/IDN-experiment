@@ -6,6 +6,7 @@ import { RouteNames } from '../router/routes';
 import MainHeader from '../component/MainHeader';
 import MainFooter from '../component/MainFooter';
 import Guide from '../component/Guide';
+import InactiveWindow from '../component/InactiveWindow';
 import { GATEWAY } from '../data/Injectables';
 import { getValue } from '../util/injector';
 
@@ -25,12 +26,15 @@ export default {
       sessionInterval: null,
       userDataAvailable: false,
       guide: false,
+      inactiveWindow: false,
+      inactiveTimer: 0,
     };
   },
   components: {
     MainHeader,
     MainFooter,
     Guide,
+    InactiveWindow,
   },
   created() {
     this.$deviceStateTracker.addEventListener(
@@ -41,6 +45,12 @@ export default {
 
     this.initResources();
     this.initTimer();
+    this.initInactive();
+
+    document.addEventListener("mousemove", this.handleActive, false);
+    document.addEventListener("mousedown", this.handleActive, false);
+    document.addEventListener("keypress", this.handleActive, false);
+    document.addEventListener("touchmove", this.handleActive, false);
   },
   methods: {
     ...mapMutations({
@@ -76,8 +86,13 @@ export default {
     initTimer() {
       const gateway = getValue(GATEWAY);
 
+      this.startTimer();
+
       gateway.get('user/session/update').then(() => {
       });
+    },
+    startTimer() {
+      const gateway = getValue(GATEWAY);
 
       this.sessionInterval = setInterval(() => {
         gateway.get('user/session/update').then(() => {
@@ -88,5 +103,30 @@ export default {
         this.setTime(result.data);
       });
     },
+    pauseTimer() {
+      clearInterval(this.sessionInterval);
+      this.$refs.header.$refs.timer.pauseTimer();
+    },
+    playTimer() {
+      this.startTimer();
+      this.$refs.header.$refs.timer.playTimer();
+    },
+    initInactive() {
+      this.inactiveTimer = setTimeout(() => {
+        this.handleInactive();
+      }, 5 * 60 * 1000);
+    },
+    handleInactive() {
+      this.inactiveWindow = true;
+      this.pauseTimer();
+    },
+    handleActive() {
+      clearTimeout(this.inactiveTimer);
+      this.initInactive();
+    },
+    handleInactiveCancel() {
+      this.inactiveWindow = false;
+      this.playTimer();
+    }
   },
 };

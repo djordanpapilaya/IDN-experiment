@@ -13,7 +13,7 @@
         </h1>
       </div>
       <div :class="[$style.timer]">
-        <timer />
+        <timer ref="timer" />
       </div>
     </div>
   </div>
