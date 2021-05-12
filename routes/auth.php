@@ -63,6 +63,10 @@ Route::get('/logout', [AuthenticatedSessionController::class, 'showDestroy'])
 	->middleware('auth')
 	->name('logout');
 
+Route::get('/finish', [AuthenticatedSessionController::class, 'finishDestroy'])
+	->middleware('auth')
+	->name('logout');
+
 Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 	->middleware('auth')
 	->name('logout');

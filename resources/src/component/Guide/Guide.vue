@@ -10,29 +10,34 @@
           Hi {{userData.firstName}} {{userData.lastName}},
           <br><br>
           Thanks for joining the experiment of the UvA about Interactive Digital Narratives. You have now completed
-          quesionnaire 1 and can start with this part of the experimenent. After you completed this part of the
-          experiment, you can go back to the Questionaire in Qauntics and complete the final part of the questionnaire.
+          questionnaire one and can start with the practical part of the experiment. After you completed this part of
+          the experiment, you can go back to the questionnaire in Quantics and complete the final part of the
+          questionnaire.
           <br><br>
-          This part of the experiment takes about 4 hours to complete. You can pause any moment and come back later.
-          Please make sure to finish the entire experiment within 2 days.
+          This part of the experiment takes about 4 hours to complete. You can always stop the experiment but are
+          encouraged to fulfil the whole 4 hours. You can pause any moment and come back later. Use your email and
+          password to log back in. Please make sure to finish the entire experiment within two days.
           <br><br>
-          Please now continue, for more information and explanation of this part of the experiment.
+          Please now continue for more explanation.
         </p>
         <a :class="[$style.button, 'button primary-button']" @click="step2">
           Continue
         </a>
       </div>
       <div :class="[$style.slideTwo]" ref="slideTwo" v-if="currentStep === 2">
-        <h2 :class="[$style.title, 'heading-01']">Visit the sources</h2>
+        <h2 :class="[$style.title, 'heading-01']">Visit the resources</h2>
         <p>
         <p :class="[$style.copy, 'copy-04']">
-          Explore by clicking on an item and open the source. The type of sources are indicated by the icon (text, video
-          or audio). To find more information about the source, place your mouse over the icon. A dialog will give you
-          more information about the source.
+          Explore by clicking on an item and open the resource. The type of resources is indicated by the icon (text,
+          video or audio). To view more information about the resource, place your mouse over the icon. A dialogue will
+          give you more information about the resource.
           <br><br>
-          When you visited a source it display a check icon to indicate that you already visited the source. You can
-          revisit sources again and multiple times.
+          When you have visited a resource, it displays a check icon to indicate that you already have visited the
+          resource. You can revisit resources multiple times.
+          <br><br>
+          The resources are classified on conservative-progressive vertically and on complexity horizontally.
         </p>
+
         <img src="../../asset/image/guide-1.jpg" alt="" :class="[$style.image]">
         <a :class="[$style.button, 'button primary-button']" @click="step3">
           Continue
@@ -43,9 +48,9 @@
         <p>
         <p :class="[$style.copy, 'copy-04']">
           If you would like to have a break from the experiment, please always use the pause button! When fully finished
-          with the experiment, use the stop button to go to the questionnaire.
+          with the experiment, use the stop button and go to the questionnaire.
           <br><br>
-          For any questions email djordan.papilaya@student.uva.nl or for urgent matters please call +31 6 812 659 04.
+          For any questions, email djordan.papilaya@student.uva.nl or for urgent matters, please call +31 6 812 659 04.
         </p>
         <a :class="[$style.button, 'button primary-button']" @click="step4">
           Continue

@@ -32,7 +32,7 @@ export default {
       this.$parent.pauseTimer();
     },
     handleStop() {
-
+      window.location.href = '/finish';
     },
     handlePause() {
       window.location.href = '/logout';
