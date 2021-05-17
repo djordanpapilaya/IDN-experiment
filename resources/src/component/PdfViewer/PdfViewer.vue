@@ -3,6 +3,6 @@
 
 <template>
   <div :class="[$style.pdfViewer]">
-    <vue-pdf-app :pdf="data.path" :config="config" @after-created="afterCreatedHandler" />
+    <vue-pdf-app :pdf="'https://idn-experiment.s3.eu-central-1.amazonaws.com/' + data.path" :config="config" @after-created="afterCreatedHandler" />
   </div>
 </template>

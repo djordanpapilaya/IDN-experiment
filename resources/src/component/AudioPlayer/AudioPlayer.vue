@@ -24,7 +24,7 @@
       </div>
 
       <audio crossorigin ref="player" preload="auto">
-        <source :src="data.path" type="audio/mpeg">
+        <source :src="'https://idn-experiment.s3.eu-central-1.amazonaws.com/' + data.path" type="audio/mpeg">
       </audio>
     </div>
   </div>
