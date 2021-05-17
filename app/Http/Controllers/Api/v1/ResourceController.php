@@ -11,6 +11,7 @@ use App\Models\TimeEvents;
 use App\Models\VideoEvents;
 use eloquentFilter\QueryFilter\ModelFilters\ModelFilters;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ResourceController extends Controller
 {
@@ -18,12 +19,20 @@ class ResourceController extends Controller
 	{
 		$data = Resource::all();
 
-		return response($data)
+		$newData = $data->map(function ($item, $key) {
+			$item->title = Str::limit($item->title, 50);
+
+			return $item;
+		});
+
+		return response($newData)
 			->header('Access-Control-Allow-Origin', '*');
 	}
 
 	public function show(\App\Models\Resource $resource)
 	{
+		$resource->title = Str::limit($resource->title, 50);
+
 		return response($resource)
 			->header('Access-Control-Allow-Origin', '*');
 	}
