@@ -20,7 +20,7 @@ class ResourceController extends Controller
 		$data = Resource::all();
 
 		$newData = $data->map(function ($item, $key) {
-			$item->title = Str::limit($item->title, 50);
+			$item->short = Str::limit($item->title, 50);
 
 			return $item;
 		});
@@ -31,7 +31,7 @@ class ResourceController extends Controller
 
 	public function show(\App\Models\Resource $resource)
 	{
-		$resource->title = Str::limit($resource->title, 50);
+		$resource->short = Str::limit($resource->title, 50);
 
 		return response($resource)
 			->header('Access-Control-Allow-Origin', '*');

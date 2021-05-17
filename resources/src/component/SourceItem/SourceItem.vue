@@ -9,7 +9,7 @@
       <Icon name="play-circle" :class="[$style.playCircle]" v-if="data.type == 'video'" />
       <Icon name="check-circle" :class="[$style.visited]"/>
     </router-link>
-    <p :class="[$style.title, 'copy-02']">{{data.title}}</p>
+    <p :class="[$style.title, 'copy-02']">{{data.short}}</p>
 
     <div :class="['js-overlay', $style.overlay, {[$style.isInverted]: isInverted}, {[$style.isRight]: isRight}]" ref="overlay">
       <div v-if="data.watched" :class="[$style.viewed, 'heading-04']">
