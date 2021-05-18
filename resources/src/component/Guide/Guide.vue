@@ -35,7 +35,9 @@
           When you have visited a resource, it displays a check icon to indicate that you already have visited the
           resource. You can revisit resources multiple times.
           <br><br>
-          The resources are classified on conservative-progressive vertically and on complexity horizontally.
+          <strong>Source Complexity</strong> <br>
+          The different sources are classified according to their complexity based on a vertical axis.
+          The sources are also classified according to their level of conservatism based on a horizontal axis.
         </p>
 
         <img src="../../asset/image/guide-1.jpg" alt="" :class="[$style.image]">
