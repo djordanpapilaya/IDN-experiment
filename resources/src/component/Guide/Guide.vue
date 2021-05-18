@@ -34,8 +34,6 @@
           <br><br>
           When you have visited a resource, it displays a check icon to indicate that you already have visited the
           resource. You can revisit resources multiple times.
-          <br><br>
-          The resources are classified on conservative-progressive vertically and on complexity horizontally.
         </p>
 
         <img src="../../asset/image/guide-1.jpg" alt="" :class="[$style.image]">
@@ -59,7 +57,7 @@
       <div :class="[$style.slideFour]" ref="slideFour" v-if="currentStep === 4">
         <h2 :class="[$style.title, 'heading-01']">Your task today</h2>
         <p>
-        <p :class="[$style.copy, 'copy-04']">
+        <p :class="[$style.copy, 'copy-04']" style="margin-bottom: 1rem;">
           Try to gain more knowledge about the following topic:
           <br><br>
           <b>
@@ -67,7 +65,14 @@
           </b>
           <br><br>
           We don't need an answer! Just explore and see what kind of information you can find or find interesting.
+          <br><br>
+          <strong>Source Complexity</strong> <br>
+          The different sources are classified according to their complexity. The photo below shows how this was done.
+          The easiest sources are at the top left and the most complex at the bottom right. <br>
+          Form refers to the origin of the source, a news site here is simple and a scientific article complex. Content
+          refers to what is said in the source, so here it concerns the use of language and the difficulty of the topic.
         </p>
+        <img src="../../asset/image/guide-2.jpg" alt="" style="height: 20rem; width: auto;" :class="[$style.image]">
         <a :class="[$style.button, 'button primary-button']" @click="close">
           Start the experiment
         </a>
