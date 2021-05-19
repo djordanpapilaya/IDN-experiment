@@ -8,6 +8,7 @@
 
   .inner {
     @include size(65vw, 85vh);
+    overflow: scroll;
     position: absolute;
     top: 50%;
     left: 50%;

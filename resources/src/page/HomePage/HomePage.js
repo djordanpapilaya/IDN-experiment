@@ -13,6 +13,7 @@ export default {
     handleAllComponentsReady() {
       this.transitionController = new HomepageTransitionController(this);
       this.isReady();
+      this.$parent.hasFooter = true;
     },
   },
 };

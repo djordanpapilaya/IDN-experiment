@@ -8,7 +8,7 @@
       <router-view />
     </transition>
     <guide v-if="!guideWatched" />
-    <main-footer />
+    <main-footer v-if="hasFooter" />
     <inactive-window @cancel="handleInactiveCancel" v-if="inactiveWindow" />
   </div>
 </template>

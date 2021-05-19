@@ -28,6 +28,7 @@ export default {
       guide: false,
       inactiveWindow: false,
       inactiveTimer: 0,
+      hasFooter: true,
     };
   },
   components: {
