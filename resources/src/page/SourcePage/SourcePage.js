@@ -39,6 +39,7 @@ export default {
     handleAllComponentsReady() {
       this.transitionController = new SourcePageTransitionController(this);
       this.isReady();
+      this.$parent.hasFooter = false;
       this.startTime = moment().format('YYYY-MM-DD HH:mm:ss');
     },
     loadResource() {
