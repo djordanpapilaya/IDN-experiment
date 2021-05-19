@@ -115,7 +115,7 @@ export default {
     initInactive() {
       this.inactiveTimer = setTimeout(() => {
         this.handleInactive();
-      }, 1 * 10 * 1000);
+      }, 5 * 60 * 1000);
     },
     handleInactive() {
       this.inactiveWindow = true;
