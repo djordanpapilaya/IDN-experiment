@@ -69,6 +69,10 @@
           </b>
           <br><br>
           We don't need an answer! Just explore and see what kind of information you can find or find interesting.
+          <br><br>
+          <strong>
+            You don't have to visit all resources. Only visit the resources you find interesting!
+          </strong>
         </p>
         <a :class="[$style.button, 'button primary-button']" @click="close">
           Start the experiment
