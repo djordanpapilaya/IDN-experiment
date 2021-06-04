@@ -18,6 +18,13 @@ class UserController extends Controller
 		return $data;
 	}
 
+	public function allUsers(Request $request)
+	{
+		$data = User::all();
+
+		return $data;
+	}
+
 	public function userData(Request $request)
 	{
 		if (\Auth::user()) {

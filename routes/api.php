@@ -28,9 +28,16 @@ Route::prefix('v1')
 	->group( function () {
 		Route::get('resources', 'ResourceController@index');
 		Route::get('resource/{resource}', 'ResourceController@show');
+		Route::get('users', 'UserController@allUsers');
 		Route::get('user', 'UserController@userData');
 		Route::get('user/session', 'UserController@sessionTime');
 		Route::get('user/session/update', 'UserController@setUserSession');
+
+		Route::get('analytics/all', 'AnalyticsController@getAllUserData');
+		Route::get('analytics/user/{id}', 'AnalyticsController@getUserData');
+		Route::get('analytics', 'AnalyticsController@allResources');
+		Route::get('analytics/resources', 'AnalyticsController@allResources');
+
 		Route::post('event/route', 'RouteController@store');
 		Route::post('event/video', 'ResourceController@storeVideo');
 		Route::post('event/audio', 'ResourceController@storeAudio');
