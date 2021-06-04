@@ -175,6 +175,7 @@ class AnalyticsController extends Controller
 				'complexity' => $complexityPath,
 				'type' => $typePath,
 			],
+			'numb_sessions' => $userSessions->count(),
 			'watched'=> $resourcesUserList
 		];
 
