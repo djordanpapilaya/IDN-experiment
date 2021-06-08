@@ -85,7 +85,7 @@ class AnalyticsController extends Controller
 			'email' => $userData[0]->email,
 		];
 
-		$routeEventsUser = RouteEvents::where('user_id', $user_id)
+		$routeEventsUser = TimeEvents::where('user_id', $user_id)
 			->get();
 
 		$timesUser = TimeEvents::where('user_id', $user_id)
@@ -128,6 +128,7 @@ class AnalyticsController extends Controller
 
 			$resourceData = [
 				'id' => $resources[0]->id,
+				'time' => $item->total_time,
 				'title'=> $resources[0]->title,
 				'copy'=> $resources[0]->copy,
 				'type'=> $resources[0]->type,
@@ -183,7 +184,7 @@ class AnalyticsController extends Controller
 
 		foreach ($userSessions as $session)
 		{
-			$routeEvents = RouteEvents::where('session_id', $session->id)
+			$routeEvents = TimeEvents::where('session_id', $session->id)
 				->get();
 
 			$timesSession = TimeEvents::where('session_id', $session->id)
@@ -225,6 +226,7 @@ class AnalyticsController extends Controller
 
 				$resourceData = [
 					'id' => $resources[0]->id,
+					'time' => $item->total_time,
 					'title'=> $resources[0]->title,
 					'copy'=> $resources[0]->copy,
 					'type'=> $resources[0]->type,
