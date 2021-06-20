@@ -30,4 +30,8 @@ Route::get('/resource/{id}', function () {
 	return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
+Route::get('/analytics', function () {
+	return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
 require __DIR__.'/auth.php';
