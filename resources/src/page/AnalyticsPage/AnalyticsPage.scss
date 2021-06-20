@@ -1,0 +1,13 @@
+/* stylelint-disable-next-line block-no-empty */
+.analytics-page {
+  .hero {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4.5rem;
+  }
+
+  .graphs {
+    display: flex;
+    justify-content: space-between;
+  }
+}

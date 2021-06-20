@@ -33,6 +33,7 @@
     }
   },
   "dependencies": {
+    "apexcharts": "^3.27.1",
     "axios": "0.19.2",
     "bowser": "1.9.4",
     "core-js": "3.6.5",
@@ -51,6 +52,7 @@
     "seng-device-state-tracker": "^1.1.4",
     "seng-scss": "^1.2.5",
     "vue": "^2.2.5",
+    "vue-apexcharts": "^1.6.1",
     "vue-core-video-player": "^0.2.0",
     "vue-i18n-manager": "^3.2.2",
     "vue-pdf-app": "^2.0.0",
