@@ -29,7 +29,8 @@ export default {
         },
         xaxis: {
           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-          decimalsInFloat: true,
+          type: 'numeric',
+          decimalsInFloat: 4,
           // min: 0,
           // max: 1,
           tickAmount: 'dataPoints',
@@ -64,11 +65,12 @@ export default {
         },
         xaxis: {
           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-          decimalsInFloat: true,
+          type: 'numeric',
+          decimalsInFloat: 4,
           // min: 0,
           // max: 1,
           tickAmount: 'dataPoints',
-          tickPlacement: 'on'
+          tickPlacement: 'on',
 
         },
         dataLabels: {
@@ -99,7 +101,8 @@ export default {
         },
         xaxis: {
           categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998],
-          decimalsInFloat: true,
+          type: 'numeric',
+          decimalsInFloat: 4,
           // min: 0,
           // max: 1,
           tickAmount: 'dataPoints',
