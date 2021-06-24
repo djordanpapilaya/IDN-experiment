@@ -10,4 +10,11 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .graph-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
