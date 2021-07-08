@@ -43,5 +43,9 @@
         <p :class="'copy-04'">End point: {{user.all.watched[user.all.stats.numb_of_sources -1].content}}</p>
       </div>
     </div>
+
+    <div :class="[$style.graphs]" v-if="chartAvailable">
+      <apexchart width="450" type="heatmap" :options="optionsHeatmap" :series="seriesHeatmap" ref="heatmap"></apexchart>
+    </div>
   </div>
 </template>

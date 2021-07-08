@@ -19,6 +19,8 @@ export default {
       complexityKeys: [],
       types: [],
       typesKeys: [],
+      typesFull: [],
+      complexityFull: [],
       options: {
         chart: {
           type: 'line',
@@ -39,10 +41,16 @@ export default {
         },
         dataLabels: {
           enabled: true,
-          formatter: function(value, { seriesIndex, dataPointIndex, w }) {
-            if(value === -1) return 'C';
-            if(value === 0) return 'M';
-            if(value === 1) return 'P';
+          formatter: function (value, { seriesIndex, dataPointIndex, w }) {
+            if (value === -1) {
+              return 'C';
+            }
+            if (value === 0) {
+              return 'M';
+            }
+            if (value === 1) {
+              return 'P';
+            }
           }
         },
         title: {
@@ -75,10 +83,16 @@ export default {
         },
         dataLabels: {
           enabled: true,
-          formatter: function(value, { seriesIndex, dataPointIndex, w }) {
-            if(value === 1) return 'V';
-            if(value === 0) return 'A';
-            if(value === -1) return 'T';
+          formatter: function (value, { seriesIndex, dataPointIndex, w }) {
+            if (value === 1) {
+              return 'V';
+            }
+            if (value === 0) {
+              return 'A';
+            }
+            if (value === -1) {
+              return 'T';
+            }
           }
         },
         title: {
@@ -111,10 +125,16 @@ export default {
         },
         dataLabels: {
           enabled: true,
-          formatter: function(value, { seriesIndex, dataPointIndex, w }) {
-            if(value === -1) return 'S';
-            if(value === 0) return 'M';
-            if(value === 1) return 'C';
+          formatter: function (value, { seriesIndex, dataPointIndex, w }) {
+            if (value === -1) {
+              return 'S';
+            }
+            if (value === 0) {
+              return 'M';
+            }
+            if (value === 1) {
+              return 'C';
+            }
           }
         },
         title: {
@@ -140,6 +160,60 @@ export default {
         name: 'series-1',
         data: []
       }],
+      seriesHeatmap: [
+        {
+          name: 'Media types',
+          data: [{
+            x: 'W1',
+            y: 43
+          }, {
+            x: 'W2',
+            y: 43
+          }, {
+            x: 'W3',
+            y: 43
+          }, {
+            x: 'W4',
+            y: 43
+          }]
+        }
+      ],
+      optionsHeatmap: {
+        plotOptions: {
+          heatmap: {
+            colorScale: {
+              // custom color range
+              ranges: [{
+                from: '-1',
+                to: '-1',
+                color: '#00A100',
+                name: 'Simple',
+              },
+                {
+                  from: '0',
+                  to: '0',
+                  color: '#FFB200',
+                  name: 'Medium',
+                },
+                {
+                  from: '1',
+                  to: '1',
+                  color: '#128FD9',
+                  name: 'Complex',
+                }],
+            },
+          },
+        },
+        dataLabels: {
+          enabled: true
+        },
+        xaxis: {
+          type: 'numeric',
+        },
+        title: {
+          text: 'Heatmap for media types with their complexity levels'
+        },
+      },
     };
   },
   extends: AbstractPageTransitionComponent,
@@ -220,6 +294,42 @@ export default {
           }
         });
 
+        this.complexityFull = this.user.all.paths.complexity.split('-');
+        const complex = this.complexityFull.pop();
+        console.log(this.user.all.paths);
+        this.typesFull = this.user.all.paths.type.split('-');
+        const type = this.typesFull.pop();
+
+        let tempComplexArray = [];
+        let heatmapArray = [];
+
+        this.complexityFull.forEach((item) => {
+          switch (item) {
+            case 'S':
+              tempComplexArray.push(-1);
+              break;
+            case 'M':
+              tempComplexArray.push(0);
+              break;
+            case 'C':
+              tempComplexArray.push(1);
+              break;
+          }
+        });
+
+        this.complexityFull = tempComplexArray;
+
+        this.complexityFull.forEach((item, index) => {
+          const temp = {
+            x: this.typesFull[index],
+            y: this.complexityFull[index],
+          };
+
+          heatmapArray.push(temp);
+        });
+
+        this.seriesHeatmap[0].data = heatmapArray;
+
         this.options.xaxis.categories = this.political;
         this.series[0].data = this.politicalKeys;
 
@@ -237,6 +347,8 @@ export default {
         this.$refs.type.updateOptions(this.optionsType);
         this.$refs.complexity.updateSeries(this.seriesComplexity);
         this.$refs.complexity.updateOptions(this.optionsComplexity);
+        this.$refs.heatmap.updateSeries(this.seriesHeatmap);
+        this.$refs.heatmap.updateOptions(this.plotOptions);
       });
     }
   },
