@@ -356,8 +356,8 @@ class AnalyticsController extends Controller
 			if ($history === $item) {
 				array_push($tempList, $item);
 			} else {
-				$previous = current($shortList[count($shortList)-1]) + (count($tempList) / $length);
-				array_push($shortList, [$tempList[0] => current($shortList[count($shortList)-1]) + (count($tempList) / $length)]);
+				$previous = current($shortList[count($shortList) - 1]) + (count($tempList) / $length);
+				array_push($shortList, [$tempList[0] => current($shortList[count($shortList) - 1]) + (count($tempList) / $length)]);
 
 				if (count($shortList) > 0) array_push($shortList, [$item => $previous]);
 				$tempList = [];
@@ -368,7 +368,7 @@ class AnalyticsController extends Controller
 			$history = $item;
 		}
 
-		array_push($shortList, [$tempList[0] => current($shortList[count($shortList)-1]) + (count($tempList) / $length)]);
+		array_push($shortList, [$tempList[0] => current($shortList[count($shortList) - 1]) + (count($tempList) / $length)]);
 
 		return $shortList;
 	}
@@ -405,8 +405,8 @@ class AnalyticsController extends Controller
 			if ($history === $item) {
 				array_push($tempList, $item);
 			} else {
-				$previous = current($shortList[count($shortList)-1]) + (count($tempList) / $length);
-				array_push($shortList, [$tempList[0] => current($shortList[count($shortList)-1]) + (count($tempList) / $length)]);
+				$previous = current($shortList[count($shortList) - 1]) + (count($tempList) / $length);
+				array_push($shortList, [$tempList[0] => current($shortList[count($shortList) - 1]) + (count($tempList) / $length)]);
 
 				if (count($shortList) > 0) array_push($shortList, [$item => $previous]);
 				$tempList = [];
@@ -417,7 +417,7 @@ class AnalyticsController extends Controller
 			$history = $item;
 		}
 
-		array_push($shortList, [$tempList[0] => current($shortList[count($shortList)-1]) + (count($tempList) / $length)]);
+		array_push($shortList, [$tempList[0] => current($shortList[count($shortList) - 1]) + (count($tempList) / $length)]);
 
 		return $shortList;
 	}
@@ -454,8 +454,8 @@ class AnalyticsController extends Controller
 			if ($history === $item) {
 				array_push($tempList, $item);
 			} else {
-				$previous = current($shortList[count($shortList)-1]) + (count($tempList) / $length);
-				array_push($shortList, [$tempList[0] => current($shortList[count($shortList)-1]) + (count($tempList) / $length)]);
+				$previous = current($shortList[count($shortList) - 1]) + (count($tempList) / $length);
+				array_push($shortList, [$tempList[0] => current($shortList[count($shortList) - 1]) + (count($tempList) / $length)]);
 
 				if (count($shortList) > 0) array_push($shortList, [$item => $previous]);
 				$tempList = [];
@@ -466,7 +466,7 @@ class AnalyticsController extends Controller
 			$history = $item;
 		}
 
-		array_push($shortList, [$tempList[0] => current($shortList[count($shortList)-1]) + (count($tempList) / $length)]);
+		array_push($shortList, [$tempList[0] => current($shortList[count($shortList) - 1]) + (count($tempList) / $length)]);
 
 		return $shortList;
 	}
@@ -486,7 +486,7 @@ class AnalyticsController extends Controller
 		$maxText = 0;
 		$avgText = 0;
 
-		foreach ($routeEvents as $key=>$item) {
+		foreach ($routeEvents as $key => $item) {
 			$resourceId = $item->resource_id;
 
 			$resources = ResourcesExtended::where('id', $resourceId)
@@ -506,8 +506,11 @@ class AnalyticsController extends Controller
 
 			$sumVideo += $timeInSeconds;
 		}
-
-		$avgVideo = $sumVideo/ count($video);
+		if (count($video) > 0) {
+			$avgVideo = $sumVideo / count($video);
+		} else {
+			$audio = [0];
+		}
 
 		foreach ($text as $item) {
 			$timeInSeconds = strtotime($item) - strtotime('TODAY');
@@ -515,7 +518,11 @@ class AnalyticsController extends Controller
 			$sumText += $timeInSeconds;
 		}
 
-		$avgText = $sumText / count($text);
+		if (count($text) > 0) {
+			$avgText = $sumText / count($text);
+		} else {
+			$audio = [0];
+		}
 
 		foreach ($audio as $item) {
 			$timeInSeconds = strtotime($item) - strtotime('TODAY');
@@ -523,7 +530,11 @@ class AnalyticsController extends Controller
 			$sumAudio += $timeInSeconds;
 		}
 
-		$avgAudio = $sumAudio / count($audio);
+		if (count($audio) > 0) {
+			$avgAudio = $sumAudio / count($audio);
+		} else {
+			$audio = [0];
+		}
 
 		return [
 			'min_audio' => min($audio),
@@ -535,6 +546,6 @@ class AnalyticsController extends Controller
 			'min_text' => min($text),
 			'max_text' => max($text),
 			'avg_text' => sprintf('%02d:%02d:%02d', ($avgText / 3600), ($avgText / 60 % 60), $avgText % 60),
-			];
+		];
 	}
 }
