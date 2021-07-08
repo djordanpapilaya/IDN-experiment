@@ -177,6 +177,7 @@ class AnalyticsController extends Controller
 				'complexity_relative' => $this->calcContentRelatives($routeEventsUser),
 				'type_relative' => $this->calcTypeRelatives($routeEventsUser),
 			],
+			'media_times' => $this->getMediaTimes($routeEventsUser),
 			'numb_sessions' => $userSessions->count(),
 			'watched' => $resourcesUserList
 		];
@@ -468,5 +469,72 @@ class AnalyticsController extends Controller
 		array_push($shortList, [$tempList[0] => current($shortList[count($shortList)-1]) + (count($tempList) / $length)]);
 
 		return $shortList;
+	}
+
+	public function getMediaTimes(Collection $routeEvents)
+	{
+		$audio = [];
+		$minAudio = 0;
+		$maxAudio = 0;
+		$avgAudio = 0;
+		$video = [];
+		$minVideo = 0;
+		$maxVideo = 0;
+		$avgVideo = 0;
+		$text = [];
+		$minText = 0;
+		$maxText = 0;
+		$avgText = 0;
+
+		foreach ($routeEvents as $key=>$item) {
+			$resourceId = $item->resource_id;
+
+			$resources = ResourcesExtended::where('id', $resourceId)
+				->get();
+
+			if ($resources[0]->type === 'text') array_push($text, $routeEvents[$key]->total_time);
+			if ($resources[0]->type === 'video') array_push($video, $routeEvents[$key]->total_time);
+			if ($resources[0]->type === 'audio') array_push($audio, $routeEvents[$key]->total_time);
+		}
+
+		$sumVideo = 0;
+		$sumText = 0;
+		$sumAudio = 0;
+
+		foreach ($video as $item) {
+			$timeInSeconds = strtotime($item) - strtotime('TODAY');
+
+			$sumVideo += $timeInSeconds;
+		}
+
+		$avgVideo = $sumVideo/ count($video);
+
+		foreach ($text as $item) {
+			$timeInSeconds = strtotime($item) - strtotime('TODAY');
+
+			$sumText += $timeInSeconds;
+		}
+
+		$avgText = $sumText / count($text);
+
+		foreach ($audio as $item) {
+			$timeInSeconds = strtotime($item) - strtotime('TODAY');
+
+			$sumAudio += $timeInSeconds;
+		}
+
+		$avgAudio = $sumAudio / count($audio);
+
+		return [
+			'min_audio' => min($audio),
+			'max_audio' => max($audio),
+			'avg_audio' => sprintf('%02d:%02d:%02d', ($avgAudio / 3600), ($avgAudio / 60 % 60), $avgAudio % 60),
+			'min_video' => min($video),
+			'max_video' => max($video),
+			'avg_video' => sprintf('%02d:%02d:%02d', ($avgVideo / 3600), ($avgVideo / 60 % 60), $avgVideo % 60),
+			'min_text' => min($text),
+			'max_text' => max($text),
+			'avg_text' => sprintf('%02d:%02d:%02d', ($avgText / 3600), ($avgText / 60 % 60), $avgText % 60),
+			];
 	}
 }
